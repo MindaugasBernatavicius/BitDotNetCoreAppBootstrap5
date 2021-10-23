@@ -6,19 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MyStaticFolder\css\site.css" />
-    <None Remove="MyStaticFolder\js\site.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="MyStaticFolder\css\site.css">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="MyStaticFolder\js\site.js">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <Content Remove="wwwroot\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MyStaticFolder\lib\" />
+    <None Include="wwwroot\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>
