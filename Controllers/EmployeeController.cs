@@ -6,8 +6,8 @@ namespace MvcApp2.Controllers
 {
     public class EmployeeController : Controller
     {
-        private EmployeeRepository _employeeRepository;
-        public EmployeeController(EmployeeRepository employeeRepository)
+        private IEmployeeRepository _employeeRepository;
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
@@ -47,5 +47,25 @@ namespace MvcApp2.Controllers
                 ? NotFound() 
                 : RedirectToAction("List");
         }
+
+        public IActionResult Create(string name)
+        {
+            _employeeRepository.Create(name);
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Details(int? id)
+        {
+            return id == null
+                ? NotFound()
+                : View(_employeeRepository.GetById((int)id));
+        }
+
+        public IActionResult Update(int id, string name)
+        {
+            _employeeRepository.Update(id, name);
+            return RedirectToAction("Details", new { id = id });
+        }
+
     }
 }
